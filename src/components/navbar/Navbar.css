@@ -1,0 +1,11 @@
+nav {
+    display: flex;
+    justify-content: flex-end;
+    padding: 1rem;
+    background-color: #f8f9fa;
+  }
+  
+  button {
+    margin: 0 0.5rem;
+  }
+  

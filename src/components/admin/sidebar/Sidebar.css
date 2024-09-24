@@ -1,0 +1,23 @@
+/* Sidebar.css */
+.sidebar {
+    transition: width 0.3s;
+    border-radius: 0 10px 10px 0; /* Rounded corners: top-right and bottom-right */
+  }
+  
+  .sidebar-paper {
+    overflow-x: hidden;
+    border-radius: 0 10px 10px 0; /* Rounded corners: top-right and bottom-right */
+  }
+  
+  /* Additional styles */
+  .sidebar .MuiDrawer-paper {
+    /* Make sure the drawer is scrollable */
+    overflow-y: auto;
+    scrollbar-width: none; /* Hide scrollbar for Firefox */
+  }
+  
+  /* Hide scrollbar for Webkit browsers (Chrome, Safari) */
+  .sidebar .MuiDrawer-paper::-webkit-scrollbar {
+    display: none;
+  }
+  
