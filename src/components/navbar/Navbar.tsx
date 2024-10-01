@@ -21,10 +21,11 @@ const Navbar: React.FC = () => {
 
       if (response.ok) {
         Cookies.remove('IsAuthenticated', { secure: true, sameSite: 'Strict' });
+        Cookies.remove('authToken', { secure: true, sameSite: 'Strict' });
+
         navigate('/signin');
       } else {
         console.error('Failed to log out');
-        // Optionally, handle logout failure (e.g., show an error message)
       }
     } catch (error) {
       console.error('An error occurred while logging out:', error);

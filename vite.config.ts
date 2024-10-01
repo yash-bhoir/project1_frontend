@@ -3,7 +3,8 @@ import react from '@vitejs/plugin-react';
 import tailwindcss from 'tailwindcss';
 import autoprefixer from 'autoprefixer';
 
-const target = 'http://localhost:8080';
+const target = 'https://bloodbank-backend-ghvn.onrender.com';
+
 export default defineConfig({
   plugins: [react()],
   css: {
@@ -13,11 +14,12 @@ export default defineConfig({
   },
   server: {
     proxy: {
-        '/api': {
-          target,
-            secure: false
-        }
+      '/api': {
+        target,          
+        changeOrigin: true, 
+        secure: true,    
+      },
     },
-    port: 5173
-}
+    port: 5173,           
+  },
 });

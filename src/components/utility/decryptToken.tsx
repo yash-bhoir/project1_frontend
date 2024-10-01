@@ -11,7 +11,7 @@ interface DecodedToken {
 }
 
 const decryptToken = (): DecodedToken | null => {
-  const token = Cookies.get('accessToken');
+  const token = Cookies.get('authToken');
   if (!token) {
     console.error('No access token found');
     return null;
@@ -19,7 +19,7 @@ const decryptToken = (): DecodedToken | null => {
 
   try {
     const decoded: DecodedToken = jwtDecode<DecodedToken>(token);
-    console.log(decoded);
+    console.log("here is the decodeToken", decoded);
     return decoded;
   } catch (error) {
     console.error('Failed to decode token:', error);

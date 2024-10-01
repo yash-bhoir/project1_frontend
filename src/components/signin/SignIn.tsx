@@ -12,7 +12,7 @@ const SignIn: React.FC = () => {
   const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
     setError(null);
-
+  
     try {
       const response = await fetch("http://localhost:5173/api/v1/users/login", {
         method: "POST",
@@ -21,10 +21,27 @@ const SignIn: React.FC = () => {
         },
         body: JSON.stringify({ identifier, password }),
       });
-
+  
+      const data = await response.json();
+  
       if (response.ok) {
+        const { user, accessToken, refreshToken } = data.data;
+  
+        console.log("User ID:", user.id);
+        console.log("Username:", user.username);
+        console.log("Email:", user.email);
+        console.log("Access Token:", accessToken);
+        console.log("Refresh Token:", refreshToken);
+        console.log("Message:", data.message);
+        console.log("Success:", data.success);
+  
         setIsAuthenticated(true);
         Cookies.set("IsAuthenticated", "true", {
+          expires: 1,
+          secure: true,
+          sameSite: "Strict",
+        });
+          Cookies.set("authToken", accessToken, {
           expires: 1,
           secure: true,
           sameSite: "Strict",
@@ -36,7 +53,7 @@ const SignIn: React.FC = () => {
       setError("An unexpected error occurred. Please try again.");
     }
   };
-
+  
   const handleGoogleSignIn = () => {
     window.location.href = "http://localhost:8080/api/v1/auth/google";
   };

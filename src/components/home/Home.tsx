@@ -1,5 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import decryptToken from '../utility/decryptToken';
+// import UserInfoForm from '../userinfo/userinfo';
+import BloodRequestForm from '../userRequest/userRequest';
 
 const Home = () => {
   const [decodedToken, setDecodedToken] = useState<any>(null);
@@ -9,14 +11,11 @@ const Home = () => {
     setDecodedToken(token);
   }, []);
 
-  if (!decodedToken) {
-    return <div>Loading...</div>;
-  }
 
   return (
     <div>
-      <h1>Decoded Token:</h1>
-      <pre>{JSON.stringify(decodedToken, null, 2)}</pre>
+     {/* <UserInfoForm/> */}
+     <BloodRequestForm/>
     </div>
   );
 };
